@@ -4,6 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 import com.star.wars.domain.dto.PeopleDTO;
+import com.star.wars.domain.dto.ResultDTO;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
@@ -16,7 +17,7 @@ public interface PeopleService {
 
 	@GET
     @Path("/")
-	Multi<PeopleDTO> findAll();
+	Uni<ResultDTO<PeopleDTO>> findAll();
 
 	@GET
     @Path("/{peopleId}")

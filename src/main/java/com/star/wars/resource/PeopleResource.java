@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.star.wars.client.PeopleService;
 import com.star.wars.domain.dto.PeopleDTO;
+import com.star.wars.domain.dto.ResultDTO;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
@@ -23,9 +24,8 @@ public class PeopleResource {
     private PeopleService service;
 
     @GET
-    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Multi<PeopleDTO> findAll() {
+    public Uni<ResultDTO<PeopleDTO>> findAll() {
         return service.findAll();
     }
 
@@ -33,9 +33,6 @@ public class PeopleResource {
     @Path("/{peopleId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Uni<PeopleDTO> findById(@PathParam Long peopleId) {
-
-        Uni<PeopleDTO> people = service.findById(peopleId);
-
-        return people;
+        return service.findById(peopleId);
     }
 }
