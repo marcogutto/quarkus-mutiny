@@ -1,12 +1,12 @@
-package org.acme;
+package com.star.wars.resource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/hello")
-public class GreetingResource {
+@Path("/planets")
+public class PlanetResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
